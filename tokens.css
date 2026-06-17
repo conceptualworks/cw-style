@@ -1,0 +1,156 @@
+/* Conceptual Works — shared design tokens.
+ * Canonical source of the OS visual language (Swiss monochrome, 1px radius).
+ * Consumed by every node app as a git submodule. Edit here, propagate everywhere.
+ * App index.css does:  @import "tailwindcss"; ... then @import "../cw-style/tokens.css";
+ * Fonts: Helvetica Neue / Arial system fallback by design — no bundled webfont. */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-bg: #fdfdfd;
+  --color-surface: #ffffff;
+  --color-border: #e2e2e2;
+  --color-border-strong: #c4c4c4;
+  --color-subtle: #222222;
+  --color-text: #111111;
+  --color-primary: #111111;
+  --color-primary-fg: #fdfdfd;
+  --color-status-paid: #4CCF83;
+  --color-status-overdue: #E36D5E;
+  --color-status-partial: #6D8FFF;
+  --color-status-neutral: #3d3d3d;
+}
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #fdfdfd;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #111111;
+  --muted: #f4f4f4;
+  --muted-foreground: #3d3d3d;
+  --accent: #f4f4f4;
+  --accent-foreground: #111111;
+  --destructive: #E36D5E;
+  --destructive-foreground: #fdfdfd;
+  --border: #e2e2e2;
+  --input: #e2e2e2;
+  --ring: #111111;
+  --radius: 1px;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #111111;
+  --sidebar-primary-foreground: #fdfdfd;
+  --sidebar-accent: #f4f4f4;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #e2e2e2;
+  --sidebar-ring: #111111;
+}
+
+.dark {
+  /* MIDA tokens */
+  --color-bg: #0f0f0f;
+  --color-surface: #171717;
+  --color-border: #2a2a2a;
+  --color-border-strong: #3d3d3d;
+  --color-muted: #a0a0a0;
+  --color-subtle: #c0c0c0;
+  --color-text: #eeeeee;
+  --color-primary: #eeeeee;
+  --color-primary-fg: #0f0f0f;
+  --color-status-neutral: #aaaaaa;
+
+  /* shadcn tokens */
+  --background: #0f0f0f;
+  --foreground: #eeeeee;
+  --card: #171717;
+  --card-foreground: #eeeeee;
+  --popover: #171717;
+  --popover-foreground: #eeeeee;
+  --primary: #eeeeee;
+  --primary-foreground: #0f0f0f;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #eeeeee;
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent: #2a2a2a;
+  --accent-foreground: #eeeeee;
+  --destructive: #E36D5E;
+  --destructive-foreground: #fdfdfd;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: #eeeeee;
+  --sidebar: #141414;
+  --sidebar-foreground: #eeeeee;
+  --sidebar-primary: #eeeeee;
+  --sidebar-primary-foreground: #0f0f0f;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #eeeeee;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #eeeeee;
+}
+
+@theme inline {
+  --font-sans: 'Helvetica Neue', Arial, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+}
