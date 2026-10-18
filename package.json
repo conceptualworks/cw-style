@@ -1,0 +1,7 @@
+{
+  "name": "cw-style",
+  "version": "0.2.0",
+  "description": "Conceptual Works shared design tokens",
+  "files": ["tokens.css", "tokens-v3.css"],
+  "license": "UNLICENSED"
+}

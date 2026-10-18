@@ -1,0 +1,73 @@
+/* Conceptual Works tokens, Tailwind v3 / shadcn-HSL edition.
+ * Same values as tokens.css (the canonical v4 file), as HSL triplets for apps whose
+ * tailwind.config maps colours as hsl(var(--x)). Scoped: applies only under
+ * <html class="cw-style">, so an app can opt one surface in (e.g. the OSIRIS admin)
+ * without touching the rest. html.* selectors outrank :root / .dark.
+ * Edit values in BOTH files until v3 consumers are gone.
+ * accent: CW pink (#E8578F). OSIRIS uses accent as its highlight colour; Studio's
+ * accent is a grey hover. Reconcile in the design pass. */
+
+html.cw-style {
+  --background: 0 0% 99.2%; /* #fdfdfd */
+  --foreground: 0 0% 6.7%; /* #111111 */
+  --card: 0 0% 100%; /* #ffffff */
+  --card-foreground: 0 0% 6.7%; /* #111111 */
+  --popover: 0 0% 100%; /* #ffffff */
+  --popover-foreground: 0 0% 6.7%; /* #111111 */
+  --primary: 0 0% 6.7%; /* #111111 */
+  --primary-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --secondary: 0 0% 95.7%; /* #f4f4f4 */
+  --secondary-foreground: 0 0% 6.7%; /* #111111 */
+  --muted: 0 0% 95.7%; /* #f4f4f4 */
+  --muted-foreground: 0 0% 23.9%; /* #3d3d3d */
+  --accent: 337 76% 62.5%; /* #E8578F */
+  --accent-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --destructive: 7 70% 62.9%; /* #E36D5E */
+  --destructive-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --border: 0 0% 88.6%; /* #e2e2e2 */
+  --input: 0 0% 88.6%; /* #e2e2e2 */
+  --ring: 0 0% 6.7%; /* #111111 */
+  --sidebar-background: 0 0% 100%; /* #ffffff */
+  --sidebar-foreground: 0 0% 6.7%; /* #111111 */
+  --sidebar-primary: 0 0% 6.7%; /* #111111 */
+  --sidebar-primary-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --sidebar-accent: 0 0% 95.7%; /* #f4f4f4 */
+  --sidebar-accent-foreground: 0 0% 6.7%; /* #111111 */
+  --sidebar-border: 0 0% 88.6%; /* #e2e2e2 */
+  --sidebar-ring: 0 0% 6.7%; /* #111111 */
+  --radius: 1px;
+}
+
+html.cw-style.dark {
+  --background: 0 0% 5.9%; /* #0f0f0f */
+  --foreground: 0 0% 93.3%; /* #eeeeee */
+  --card: 0 0% 9%; /* #171717 */
+  --card-foreground: 0 0% 93.3%; /* #eeeeee */
+  --popover: 0 0% 9%; /* #171717 */
+  --popover-foreground: 0 0% 93.3%; /* #eeeeee */
+  --primary: 0 0% 93.3%; /* #eeeeee */
+  --primary-foreground: 0 0% 5.9%; /* #0f0f0f */
+  --secondary: 0 0% 16.5%; /* #2a2a2a */
+  --secondary-foreground: 0 0% 93.3%; /* #eeeeee */
+  --muted: 0 0% 16.5%; /* #2a2a2a */
+  --muted-foreground: 0 0% 62.7%; /* #a0a0a0 */
+  --accent: 337 76% 62.5%; /* #E8578F */
+  --accent-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --destructive: 7 70% 62.9%; /* #E36D5E */
+  --destructive-foreground: 0 0% 99.2%; /* #fdfdfd */
+  --border: 0 0% 16.5%; /* #2a2a2a */
+  --input: 0 0% 16.5%; /* #2a2a2a */
+  --ring: 0 0% 93.3%; /* #eeeeee */
+  --sidebar-background: 0 0% 7.8%; /* #141414 */
+  --sidebar-foreground: 0 0% 93.3%; /* #eeeeee */
+  --sidebar-primary: 0 0% 93.3%; /* #eeeeee */
+  --sidebar-primary-foreground: 0 0% 5.9%; /* #0f0f0f */
+  --sidebar-accent: 0 0% 16.5%; /* #2a2a2a */
+  --sidebar-accent-foreground: 0 0% 93.3%; /* #eeeeee */
+  --sidebar-border: 0 0% 16.5%; /* #2a2a2a */
+  --sidebar-ring: 0 0% 93.3%; /* #eeeeee */
+}
+
+html.cw-style body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
