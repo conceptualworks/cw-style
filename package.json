@@ -1,7 +1,14 @@
 {
   "name": "cw-style",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Conceptual Works shared design tokens",
-  "files": ["tokens.css", "tokens-v3.css"],
-  "license": "UNLICENSED"
+  "files": [
+    "tokens.css",
+    "tokens-v3.css",
+    "components.css"
+  ],
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "node scripts/build-v3.mjs"
+  }
 }

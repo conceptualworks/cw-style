@@ -1,0 +1,108 @@
+/* Conceptual Works — shared app shell: sidebar brand, page header bar, nav items, Hub tiles.
+ * One definition for Studio and the OSIRIS admin. Reads only the --cw-* aliases, which
+ * tokens.css (Tailwind v4) and tokens-v3.css (Tailwind v3, under html.cw-style) both define,
+ * so the same file works in either app. Import it after the tokens file.
+ * Header height is fixed so the sidebar brand and every page header share one bottom line. */
+
+@layer components {
+  .cw-sidebar-brand {
+    display: flex;
+    align-items: center;
+    height: 61px;
+    flex-shrink: 0;
+    padding: 0 1.25rem;
+    border-bottom: 1px solid var(--cw-line);
+  }
+  .cw-sidebar-brand-name { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; letter-spacing: -0.025em; color: var(--cw-fg); }
+  .cw-sidebar-brand-org { margin-left: 0.25rem; font-size: 0.75rem; line-height: 1rem; color: var(--cw-muted-fg); }
+
+  .cw-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 61px;
+    flex-shrink: 0;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--cw-line);
+    background: var(--cw-surface);
+  }
+  .cw-page-title { margin: 0; font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; color: var(--cw-fg); }
+
+  /* Sidebar links and buttons. Active = react-router's .active or aria-current="page". */
+  .cw-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.5rem 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: left;
+    border-radius: 1px;
+    color: var(--cw-subtle);
+    transition: color 150ms, background-color 150ms;
+  }
+  .cw-nav-item:hover { background: var(--cw-line); color: var(--cw-fg); }
+  .cw-nav-item.active,
+  .cw-nav-item[aria-current="page"] { background: var(--cw-active-bg); color: var(--cw-active-fg); font-weight: 500; }
+
+  /* Hub tiles — Destiny 2 menu idiom: selection frame with corner brackets, light sweep,
+     fill bar. Hover only on .hub-tile-live; reduced motion keeps the states, drops movement. */
+  /* .hub-tile = the effects host (also used on Studio's project cards).
+     .hub-tile-frame = the Hub's own box. */
+  .hub-tile { position: relative; overflow: hidden; outline: none; }
+  .hub-tile-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 10rem;
+    padding: 1.25rem;
+    text-align: left;
+    border: 1px solid var(--cw-line);
+    border-radius: 1px;
+    background: var(--cw-surface);
+  }
+  @media (min-width: 768px) { .hub-tile-frame { height: 100%; } }
+  .hub-tile-locked { opacity: 0.4; }
+
+  .hub-tile-frame.hub-tile-live { cursor: pointer; transition: border-color 150ms, background-color 150ms, transform 150ms; }
+  .hub-tile-frame.hub-tile-live:hover { border-color: var(--cw-fg); background: var(--cw-bg); }
+  .hub-tile-frame.hub-tile-live:focus-visible { border-color: var(--cw-fg); }
+  .hub-tile-frame.hub-tile-live:active { transform: scale(0.98); }
+
+  .hub-tile .hub-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    border-color: var(--cw-fg);
+    transition: opacity 120ms ease-out, transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+  .hub-tile .hub-corner-tl { top: 6px; left: 6px; border-top: 1.5px solid; border-left: 1.5px solid; transform: translate(-8px, -8px); }
+  .hub-tile .hub-corner-tr { top: 6px; right: 6px; border-top: 1.5px solid; border-right: 1.5px solid; transform: translate(8px, -8px); }
+  .hub-tile .hub-corner-bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid; border-left: 1.5px solid; transform: translate(-8px, 8px); }
+  .hub-tile .hub-corner-br { bottom: 6px; right: 6px; border-bottom: 1.5px solid; border-right: 1.5px solid; transform: translate(8px, 8px); }
+  .hub-tile-live:hover .hub-corner,
+  .hub-tile-live:focus-visible .hub-corner { opacity: 1; transform: translate(0, 0); }
+
+  .hub-tile-live::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, var(--cw-fg) 9%, transparent) 50%, transparent 65%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+  .hub-tile-live:hover::after { animation: hub-sweep 650ms ease-out; }
+
+  .hub-tile .hub-bar { display: block; height: 1px; width: 100%; margin: 0.5rem 0; background: var(--cw-fg); transform: scaleX(0); transform-origin: left; transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .hub-tile-live:hover .hub-bar,
+  .hub-tile-live:focus-visible .hub-bar { transform: scaleX(1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hub-tile .hub-corner, .hub-tile .hub-bar, .hub-tile-frame.hub-tile-live { transition: none; }
+    .hub-tile-live:hover::after { animation: none; }
+  }
+}
+
+@keyframes hub-sweep { to { transform: translateX(120%); } }

@@ -2,6 +2,7 @@
  * Canonical source of the OS visual language (Swiss monochrome, 1px radius).
  * Consumed by every node app as a git submodule. Edit here, propagate everywhere.
  * App index.css does:  @import "tailwindcss"; ... then @import "../cw-style/tokens.css";
+ * tokens-v3.css is GENERATED from this file: run `node scripts/build-v3.mjs` after any edit.
  * Fonts: Helvetica Neue / Arial system fallback by design — no bundled webfont. */
 
 @custom-variant dark (&:is(.dark *));
@@ -19,6 +20,10 @@
   --color-status-overdue: #E36D5E;
   --color-status-partial: #6D8FFF;
   --color-status-neutral: #3d3d3d;
+  /* Categorical chart pair (identity, not status) — validated CVD-safe on both
+   * surfaces (dataviz six checks). chart-1 = CW pink. Fixed order, never cycled. */
+  --color-chart-1: #E8578F;
+  --color-chart-2: #7A5FE0;
 }
 
 :root {
@@ -34,8 +39,9 @@
   --secondary-foreground: #111111;
   --muted: #f4f4f4;
   --muted-foreground: #3d3d3d;
-  --accent: #f4f4f4;
-  --accent-foreground: #111111;
+  --subtle: #222222;
+  --accent: #E8578F;
+  --accent-foreground: #fdfdfd;
   --destructive: #E36D5E;
   --destructive-foreground: #fdfdfd;
   --border: #e2e2e2;
@@ -50,6 +56,15 @@
   --sidebar-accent-foreground: #111111;
   --sidebar-border: #e2e2e2;
   --sidebar-ring: #111111;
+  /* components.css reads only these. tokens-v3.css redefines them as hsl(...). */
+  --cw-fg: var(--foreground);
+  --cw-subtle: var(--subtle);
+  --cw-muted-fg: var(--muted-foreground);
+  --cw-bg: var(--background);
+  --cw-surface: var(--card);
+  --cw-line: var(--border);
+  --cw-active-bg: var(--primary);
+  --cw-active-fg: var(--primary-foreground);
 }
 
 .dark {
@@ -78,8 +93,9 @@
   --secondary-foreground: #eeeeee;
   --muted: #2a2a2a;
   --muted-foreground: #a0a0a0;
-  --accent: #2a2a2a;
-  --accent-foreground: #eeeeee;
+  --subtle: #c0c0c0;
+  --accent: #E8578F;
+  --accent-foreground: #fdfdfd;
   --destructive: #E36D5E;
   --destructive-foreground: #fdfdfd;
   --border: #2a2a2a;
